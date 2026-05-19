@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PMB Universitas Nurul Huda | Modern Edition</title>
+    <!-- Bootstrap 5.3 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts: Plus Jakarta Sans & Outfit (Modern, Tajam, & Terpilih) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --unuha-primary: #334155;
+            /* Slate Dark - Abu-abu Elegan */
+            --unuha-accent: #22c55e;
+            /* Green Accent tetap ada untuk identitas */
+            --unuha-slate-50: #f8fafc;
+            --unuha-slate-100: #f1f5f9;
+            --unuha-slate-200: #e2e8f0;
+            --unuha-slate-400: #94a3b8;
+            --unuha-slate-600: #475569;
+            --unuha-slate-900: #0f172a;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: white;
+            color: var(--unuha-slate-900);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        .font-outfit {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* --- Navbar & Logo Styling --- */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--unuha-slate-100);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand-custom {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-wrapper {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            background: white;
+            padding: 5px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand-custom:hover .logo-wrapper {
+            transform: scale(1.05) rotate(-3deg);
+        }
+
+        .logo-wrapper img {
+            max-height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--unuha-slate-900);
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        .brand-sub {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--unuha-accent);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--unuha-slate-600) !important;
+            padding: 8px 16px !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--unuha-slate-900) !important;
+        }
+
+        .search-box-custom {
+            position: relative;
+        }
+
+        .search-box-custom .form-control {
+            border-radius: 100px;
+            padding-left: 40px;
+            border: 1px solid var(--unuha-slate-200);
+            background-color: var(--unuha-slate-50);
+            font-size: 0.9rem;
+            width: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box-custom .form-control:focus {
+            width: 250px;
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+            border-color: var(--unuha-accent);
+        }
+
+        .search-icon-nav {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--unuha-slate-400);
+            pointer-events: none;
+        }
+
+        /* --- End Navbar Styling --- */
+
+        /* Modern Background Decor */
+        .bg-grid {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background-image: radial-gradient(var(--unuha-slate-200) 1px, transparent 1px);
+            background-size: 30px 30px;
+            mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, black 70%, transparent 100%);
+            opacity: 0.5;
+        }
+
+        .hero-section {
+            padding: 120px 0;
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--unuha-slate-100);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--unuha-slate-600);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--unuha-slate-200);
+        }
+
+        .hero-title {
+            font-weight: 800;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--unuha-slate-900);
+            letter-spacing: -0.03em;
+        }
+
+        .hero-title span {
+            background: linear-gradient(to right, var(--unuha-primary), var(--unuha-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--unuha-slate-600);
+            margin-bottom: 2.5rem;
+            max-width: 540px;
+        }
+
+        /* Buttons Update */
+        .btn-modern {
+            padding: 14px 32px;
+            font-weight: 600;
+            border-radius: 14px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .btn-dark-modern {
+            background-color: var(--unuha-slate-900);
+            color: white;
+            border: none;
+            box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.3);
+        }
+
+        .btn-dark-modern:hover {
+            background-color: #000;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.4);
+        }
+
+        .btn-ghost-modern {
+            background-color: transparent;
+            color: var(--unuha-slate-900);
+            border: 1px solid var(--unuha-slate-200);
+        }
+
+        .btn-ghost-modern:hover {
+            background-color: var(--unuha-slate-100);
+            transform: translateY(-5px);
+        }
+
+        /* Image Display */
+        .img-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .img-card {
+            background: white;
+            padding: 15px;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            transform: rotate(2deg);
+            transition: transform 0.5s ease;
+        }
+
+        .img-card:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .img-card img {
+            border-radius: 20px;
+            width: 100%;
+            display: block;
+        }
+
+        .floating-info {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: bounce 4s infinite ease-in-out;
+            z-index: 2;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .icon-box {
+            width: 45px;
+            height: 45px;
+            background: var(--unuha-slate-100);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--unuha-accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 991.98px) {
+            .hero-section {
+                padding: 80px 0;
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .btn-group-custom {
+                justify-content: center;
+            }
+
+            .img-container {
+                margin-top: 80px;
+            }
+
+            .floating-info {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -40px;
+            }
+
+            @keyframes bounce {
+
+                0%,
+                100% {
+                    transform: translateX(-50%) translateY(0);
+                }
+
+                50% {
+                    transform: translateX(-50%) translateY(-15px);
+                }
+            }
+        }
+
+        .gambar1 img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Agar gambar terpotong rapi dan tidak gepeng */
+}
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- Brand / Logo Area -->
+            <a class="navbar-brand-custom" href="#">
+                <div class="logo-wrapper me-2">
+                    <img src="C:\Users\User\Pictures\OIP.jpg" alt="UNUHA Logo"
+                        onerror="this.src='unuhaijo.png'">
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">Nurul Huda</span>
+                    <span class="brand-sub">University</span>
+                </div>
+            </a>
+
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Beranda</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Pendaftaran
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow-lg rounded-4 mt-2">
+                            <li><a class="dropdown-item py-2 px-3" href="#">Jalur Seleksi</a></li>
+                            <li>
+                                <hr class="dropdown-divider opacity-50">
+                            </li>
+                            <li><a class="dropdown-item py-2 px-3" href="#">Prosedur Pendaftaran</a></li>
+                            <li>
+                                <hr class="dropdown-divider opacity-50">
+                            </li>
+                            <li><a class="dropdown-item py-2 px-3" href="#">Jadwal Pendaftaran</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Program Studi
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow-lg rounded-4 mt-2">
+                            <li><a class="dropdown-item py-2 px-3" href="#">Sarjana</a></li>
+                            <li>
+                                <hr class="dropdown-divider opacity-50">
+                            </li>
+                            <li><a class="dropdown-item py-2 px-3" href="#">Pasca Sarjana</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <form class="search-box-custom" role="search">
+                    <i data-lucide="search" size="18" class="search-icon-nav"></i>
+                    <input class="form-control" type="search" placeholder="Cari info..." aria-label="Search" />
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Grid Background -->
+    <div class="bg-grid"></div>
+
+    <!-- section Hero -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Text Column -->
+                <div class="col-lg-6 order-2 order-lg-1">
+                    <div class="hero-badge">
+                        <i data-lucide="sparkles" size="16" class="me-2 text-warning"></i>
+                        Penerimaan Mahasiswa Baru 2026/2027
+                    </div>
+
+                    <h1 class="hero-title">
+                        Wujudkan Karir <br> <span>Masa Depanmu</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Gabung bersama <strong>Universitas Nurul Huda</strong>. Platform pendidikan inklusif dengan
+                        kurikulum adaptif untuk melahirkan inovator masa depan.
+                    </p>
+
+                    <div class="d-flex flex-column flex-sm-row gap-3 btn-group-custom">
+                        <a href="https://sisfo.unuha.ac.id/pendaftaran" class="btn btn-modern btn-dark-modern"
+                            target="_blank">
+                            Daftar Sekarang
+                            <i data-lucide="arrow-right-circle" size="20"></i>
+                        </a>
+                        <a href="https://pmb.unuha.ac.id/public/berita/" class="btn btn-modern btn-ghost-modern"
+                            target="_blank">
+                            <i data-lucide="info" size="20"></i>
+                            Panduan PMB
+                        </a>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="mt-5 d-flex align-items-center gap-4 opacity-75">
+                        <div class="d-flex align-items-center gap-2">
+                            <i data-lucide="shield-check" size="18" class="text-success"></i>
+                            <small class="fw-semibold">Terakreditasi BAN-PT</small>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <i data-lucide="users" size="18" class="text-primary"></i>
+                            <small class="fw-semibold">5000+ Alumni</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Column -->
+                <div class="col-lg-6 order-1 order-lg-2">
+                    <div class="img-container">
+                        <div class="img-card">
+                            <img src="C:\Users\User\Pictures\OIP.jpg" alt="Academic Experience"
+                                onerror="this.src='unuhaijo.png'">
+                        </div>
+
+                        <!-- Floating Info Card -->
+                        <div class="floating-info d-none d-sm-flex">
+                            <div class="icon-box">
+                                <i data-lucide="graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Beasiswa Tersedia</h6>
+                                <p class="mb-0 small text-muted">KIP-K & Prestasi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- section card -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <div class="text-center"><h2>Fasilitas Kampus</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, quasi ea mollitia dolorum velit vero earum maiores tempora sequi similique consequatur, error minima itaque suscipit corporis numquam blanditiis ab nobis facere exercitationem quam provident enim deserunt quisquam. Illo error optio, deserunt ut rerum aliquam. Possimus officiis obcaecati velit perferendis rerum.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+    <div class="bg-white border-0 shadow-sm rounded-5 p-4 h-100 text-center">
+                        <div class="gambar1">
+                            <img src="C:\Users\User\Pictures\infunuha_1747633748_3635737858835063758_59102464019-1024x1024.jpg" alt="" class="img-fluid rounded-4">
+                        </div>
+                        <h3>Fasilitas Kampus</h3>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, aspernatur cumque fugit sint
+                            assumenda commodi!</p>
+                        <a href="" class="btn btn-primary ">Hubungi Kami</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+    <div class="bg-white border-0 shadow-sm rounded-5 p-4 h-100 text-center">
+                        <div class="gambar1">
+                            <img src="C:\Users\User\Pictures\OIP (2).jpg" alt="" class="img-fluid rounded-4">
+                        </div>
+                        <h3>Fasilitas Kampus</h3>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, aspernatur cumque fugit sint
+                            assumenda commodi!</p>
+                        <a href="" class="btn btn-primary">Hubungi Kami</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+    <div class="bg-white border-0 shadow-sm rounded-5 p-4 h-100 text-center">
+                        <div class="gambar1">
+                            <img src="C:\Users\User\Pictures\OIP (1).jpg" alt="" class="img-fluid rounded-4">
+                        </div>
+                        <h3>Fasilitas Kampus</h3>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, aspernatur cumque fugit sint
+                            assumenda commodi!</p>
+                        <a href="" class="btn btn-primary">Hubungi Kami</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+    <div class="bg-white border-0 shadow-sm rounded-5 p-4 h-100 text-center">
+                        <div class="gambar1">
+                            <img src="C:\Users\User\Pictures\OIP (4).jpg" alt="" class="img-fluid rounded-4">
+                        </div>
+                        <h3>Fasilitas Kampus</h3>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, aspernatur cumque fugit sint
+                            assumenda commodi!</p>
+                        <a href="" class="btn btn-primary">Hubungi Kami</a>
+                    </div>
+                </div>
+               <div class="col-lg-4 col-md-6">
+    <div class="bg-white border-0 shadow-sm rounded-5 p-4 h-100 text-center">
+                        <div class="gambar1">
+                            <img src="C:\Users\User\Pictures\ratusan-mahasiswa-terjebak-di-kampus-pascasarjana-universitas-diponegoro-undip_250501224701-120.jpeg" alt="" class="img-fluid rounded-4">
+                        </div>
+                        <h3>Fasilitas Kampus</h3>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, aspernatur cumque fugit sint
+                            assumenda commodi!</p>
+                        <a href="" class="btn btn-primary">Hubungi Kami</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+    <div class="bg-white border-0 shadow-sm rounded-5 p-4 h-100 text-center">
+                        <div class="gambar1">
+                            <img src="C:\Users\User\Pictures\pak_robi_office-5.jpg" alt="" class="img-fluid rounded-4">
+                        </div>
+                        <h3>Fasilitas Kampus</h3>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, aspernatur cumque fugit sint
+                            assumenda commodi!</p>
+                        <a href="" class="btn btn-primary">Hubungi Kami</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <!-- Footer Simple -->
+    <footer class="py-4 text-center border-top border-light">
+        <p class="text-muted small mb-0">&copy; 2025 Universitas Nurul Huda. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap & Lucide Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
